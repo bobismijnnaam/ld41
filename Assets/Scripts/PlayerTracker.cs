@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class PlayerTracker : MonoBehaviour {
 
+    void Start() {
+        EventManager.StartListening(EventManager.ENTER_OBSERVE_MODE, enterObserveMode);
+        EventManager.StartListening(EventManager.LEAVE_OBSERVE_MODE, leaveObserveMode);
+    }
+
 	// Update is called once per frame
 	void Update () {
         var y = transform.eulerAngles.y;
@@ -17,4 +22,12 @@ public class PlayerTracker : MonoBehaviour {
             EventManager.TriggerEvent(EventManager.SEE_EAST_WALL);
         }
 	}
+
+    void enterObserveMode() {
+        gameObject.SetActive(false);
+    }
+
+    void leaveObserveMode() {
+        gameObject.SetActive(true);
+    }
 }

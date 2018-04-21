@@ -13,6 +13,9 @@ public class EventManager : MonoBehaviour {
     public static string SEE_NOTHING = "SEE_NOTHING";
     public static string DISABLE_FPS_CAMERA = "DISABLE_FPS_CAMERA";
     public static string ENABLE_PICTURE1_CAMERA = "ENABLE_PICTURE1_CAMERA";
+    public static string ENTER_OBSERVE_MODE = "ENTER_OBSERVE_MODE";
+    public static string LEAVE_OBSERVE_MODE = "LEAVE_OBSERVE_MODE";
+    public static string KEEP_INFO_ALIVE = "KEEP_INFO_ALIVE";
 
     private Dictionary <string, UnityEvent> eventDictionary;
 

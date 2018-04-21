@@ -12,11 +12,15 @@ public class Storyline : MonoBehaviour {
     public Camera fpsCamera;
     public Camera picture1Camera;
     public Camera magnifyingCamera;
+    public GameObject picture1Tagline;
+
+    public GameObject frame2;
 
     public float picture1CameraDist;
 
     bool sawSouthWall;
     bool magnifying;
+    bool sawLittleMan;
 
 	// Use this for initialization
 	void Start () {
@@ -24,27 +28,51 @@ public class Storyline : MonoBehaviour {
 	    EventManager.StartListening(EventManager.SEE_SOUTH_WALL, seeSouthWall);	
 	    EventManager.StartListening(EventManager.SEE_EAST_WALL, seeEastWall);	
 	    EventManager.StartListening(EventManager.SEE_WEST_WALL, seeWestWall);	
-        EventManager.StartListening(EventManager.SEE_PICTURE, seePicture);
-        EventManager.StartListening(EventManager.SEE_NOTHING, seeNothing);
+        EventManager.StartListening(EventManager.ENTER_OBSERVE_MODE, enterObserveMode);
+        EventManager.StartListening(EventManager.LEAVE_OBSERVE_MODE, leaveObserveMode);
         
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = true;
 	}
 
+    void enterObserveMode() {
+        Cursor.lockState = CursorLockMode.None;
+        infoText.text = "Press Q to return";
+        // TODO: Disallow walking!
+    }
+
+    void leaveObserveMode() {
+        Cursor.lockState = CursorLockMode.Locked;
+        infoText.text = "Press E to examine";
+        // TODO: Allow walking!
+    }
+
     void Update() {
-        if (infoText.gameObject.activeSelf && Input.GetKeyDown(KeyCode.E)) {
-            fpsCamera.gameObject.SetActive(false);
-            picture1Camera.gameObject.SetActive(true);
-            magnifyingCamera.gameObject.SetActive(true);
-            infoText.text = "Press Q to return";
+        if (!picture1Camera.gameObject.activeSelf) {
+            if (isLookingAtPicture1()) {
+                EventManager.TriggerEvent(EventManager.KEEP_INFO_ALIVE);
+            }
 
-            Cursor.lockState = CursorLockMode.None;
-            rectangleBorder.gameObject.SetActive(true);
+            if (isLookingAtPicture1() && Input.GetKeyDown(KeyCode.E)) {
+                fpsCamera.gameObject.SetActive(false);
+                picture1Camera.gameObject.SetActive(true);
+                magnifyingCamera.gameObject.SetActive(true);
 
-            magnifying = true;
+                infoText.text = "Press Q to return";
+
+                Cursor.lockState = CursorLockMode.None;
+                rectangleBorder.gameObject.SetActive(true);
+
+                magnifying = true;
+
+                EventManager.TriggerEvent(EventManager.ENTER_OBSERVE_MODE);
+            }
         }
 
+
         if (magnifying) {
+            EventManager.TriggerEvent(EventManager.KEEP_INFO_ALIVE);
+
             var mousePos = Input.mousePosition;
             var viewportSize = new Vector2(200, 200);
             
@@ -62,11 +90,19 @@ public class Storyline : MonoBehaviour {
                     viewportSize.y
                     );
 
+            if (rch.collider.name == "LittleMan" && !sawLittleMan) {
+                sawLittleMan = true;
+                spawnSecondPicture();
+            }
+
             rectangleBorder.transform.position = new Vector3(mousePos.x, mousePos.y, 1);
             rectangleBorder.rectTransform.sizeDelta = viewportSize;
         }
 
         if (picture1Camera.gameObject.activeSelf && Input.GetKeyDown(KeyCode.Q)) {
+            EventManager.TriggerEvent(EventManager.LEAVE_OBSERVE_MODE);
+            magnifying = false;
+
             fpsCamera.gameObject.SetActive(true);
             picture1Camera.gameObject.SetActive(false);
             magnifyingCamera.gameObject.SetActive(false);
@@ -75,41 +111,59 @@ public class Storyline : MonoBehaviour {
             Cursor.lockState = CursorLockMode.Locked;
 
             rectangleBorder.gameObject.SetActive(false);
+
+            if (sawLittleMan) {
+                var obj = GameObject.Find("LittleMan");
+                if (obj != null) {
+                    GameObject.Destroy(obj);
+                    var tm = picture1Tagline.GetComponent<TextMesh>();
+                    tm.text = "Fields";
+                    Debug.Log("Changed te text!");
+                }
+            }
         }
     }
 
     void seeNorthWall() {
-        //Debug.Log("Seeing the north wall!");
     }
 
     void seeEastWall() {
-        //Debug.Log("Seeing the east wall!");
     }
     
     void seeWestWall() {
-        //Debug.Log("Seeing the west wall!");
     }
 
     void seeSouthWall() {
-        //Debug.Log("Seeing the south wall!");
-
         if (!sawSouthWall) {
             sawSouthWall = true;
-            AudioSource.PlayClipAtPoint(notificationSound, new Vector3(0, 0, 0));
             spawnFirstPicture();
         }
 
     }
 
-    void seePicture() {
-        infoText.gameObject.SetActive(true);
-    }
-
-    void seeNothing() {
-        infoText.gameObject.SetActive(false);
-    }
-
     void spawnFirstPicture() {
+        ringBell(frame1.transform.position);
         frame1.SetActive(true);
+    }
+
+    void spawnSecondPicture() {
+        ringBell(new Vector3(0, 0, 0));
+        frame2.SetActive(true);
+    }
+
+    void ringBell(Vector3 pos) {
+        AudioSource.PlayClipAtPoint(notificationSound, pos);
+    }
+
+    bool isLookingAtPicture1() {
+        var start = fpsCamera.transform.position;
+        var dir = fpsCamera.transform.forward;
+        
+        RaycastHit rch;
+        if (Physics.Raycast(start, dir, out rch, 3)) {
+            return rch.collider.gameObject.name == "Picture1";
+        }
+
+        return false;
     }
 }
