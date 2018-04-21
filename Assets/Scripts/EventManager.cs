@@ -9,6 +9,8 @@ public class EventManager : MonoBehaviour {
     public static string SEE_WEST_WALL = "SEE_WEST_WALL";
     public static string SEE_EAST_WALL = "SEE_EAST_WALL";
     public static string SEE_SOUTH_WALL = "SEE_SOUTH_WALL";
+    public static string SEE_PICTURE = "SEE_PICTURE";
+    public static string SEE_NOTHING = "SEE_NOTHING";
 
     private Dictionary <string, UnityEvent> eventDictionary;
 
