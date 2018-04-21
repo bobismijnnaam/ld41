@@ -11,6 +11,8 @@ public class EventManager : MonoBehaviour {
     public static string SEE_SOUTH_WALL = "SEE_SOUTH_WALL";
     public static string SEE_PICTURE = "SEE_PICTURE";
     public static string SEE_NOTHING = "SEE_NOTHING";
+    public static string DISABLE_FPS_CAMERA = "DISABLE_FPS_CAMERA";
+    public static string ENABLE_PICTURE1_CAMERA = "ENABLE_PICTURE1_CAMERA";
 
     private Dictionary <string, UnityEvent> eventDictionary;
 
