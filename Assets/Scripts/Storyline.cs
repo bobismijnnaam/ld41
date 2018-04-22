@@ -42,13 +42,11 @@ public class Storyline : MonoBehaviour {
     void enterObserveMode() {
         Cursor.lockState = CursorLockMode.None;
         infoText.text = "Press Q to return";
-        // TODO: Disallow walking!
     }
 
     void leaveObserveMode() {
         Cursor.lockState = CursorLockMode.Locked;
         infoText.text = "Press E to examine";
-        // TODO: Allow walking!
     }
 
     void Update() {
