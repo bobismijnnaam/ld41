@@ -7,6 +7,8 @@ public class Blackouter : MonoBehaviour {
     public Material blackMaterial;
     public string newTagLine;
     public GameObject tagLine;
+    public Camera observeCamera;
+    public AudioSource endingMusic;
 
     enum State {
         Idle,
@@ -30,7 +32,7 @@ public class Blackouter : MonoBehaviour {
     }
 
     void enterObserveMode() {
-        if (state == State.Primed) {
+        if (state == State.Primed && !observeCamera.gameObject.activeSelf) {
             // Make painting black!
             var mr = GetComponent<MeshRenderer>();
             mr.material = blackMaterial;
@@ -41,6 +43,13 @@ public class Blackouter : MonoBehaviour {
             // Unprime
             state = State.Black;
 
+            // Do music stuff
+            endingMusic.volume += 0.2f;
+            if (!endingMusic.isPlaying) {
+                endingMusic.Play();
+            }
+
+            EventManager.TriggerEvent(EventManager.PICTURE_BLACKED_OUT);
         }
     }
 

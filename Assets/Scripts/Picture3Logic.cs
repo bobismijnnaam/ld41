@@ -17,6 +17,8 @@ public class Picture3Logic : MonoBehaviour {
     Camera mainCamera;
     State state;
 
+    bool hasBlackoutStarted;
+
 	// Use this for initialization
 	void Start () {
 		state = State.NotLooking;
@@ -37,7 +39,11 @@ public class Picture3Logic : MonoBehaviour {
                     mainCamera.gameObject.SetActive(false);
                     observeCamera.gameObject.SetActive(true);
 
-                    EventManager.TriggerEvent(EventManager.BLACKING_OUT_PHASE_START);
+                    if (!hasBlackoutStarted) {
+                        EventManager.TriggerEvent(EventManager.BLACKING_OUT_PHASE_START);
+                        hasBlackoutStarted = true;
+                    }
+
                     EventManager.TriggerEvent(EventManager.ENTER_OBSERVE_MODE);
                     state = State.Looking;
                     blackouter.areBeingObserved();

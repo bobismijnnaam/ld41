@@ -18,6 +18,7 @@ public class EventManager : MonoBehaviour {
     public const string KEEP_INFO_ALIVE = "KEEP_INFO_ALIVE";
     public const string KNOB_TWISTED = "KNOB_TWISTED";
     public const string BLACKING_OUT_PHASE_START = "BLACKING_OUT_PHASE_START";
+    public const string PICTURE_BLACKED_OUT = "PICTURE_BLACKED_OUT";
 
     private Dictionary <string, UnityEvent> eventDictionary;
 
