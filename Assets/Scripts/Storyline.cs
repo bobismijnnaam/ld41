@@ -118,7 +118,6 @@ public class Storyline : MonoBehaviour {
                     GameObject.Destroy(obj);
                     var tm = picture1Tagline.GetComponent<TextMesh>();
                     tm.text = "Fields";
-                    Debug.Log("Changed te text!");
                 }
             }
         }
