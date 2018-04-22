@@ -19,5 +19,5 @@ https://freesound.org/people/chromakei/sounds/400390/
 Chlildren laughing
 https://freesound.org/people/Ironi%20Alef/sounds/31605/
 
-Wood planks
-https://pxhere.com/en/photo/927627
+Paul Cezanne - Still Life Plate of Fruit
+Van Gogh - Grunes Weizenfeld
