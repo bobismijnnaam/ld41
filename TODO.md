@@ -1,0 +1,5 @@
+- upload to LD
+- music notification in intro
+- "the end" thingy
+- fix texts
+- fade in music intensity

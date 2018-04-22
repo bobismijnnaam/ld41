@@ -827,8 +827,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 326412562}
-  - component: {fileID: 326412561}
   - component: {fileID: 326412563}
+  - component: {fileID: 326412561}
   m_Layer: 0
   m_Name: StoryEvent
   m_TagString: Untagged
@@ -1447,7 +1447,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 762707056}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 18c643733346e4b4baee0e12616d1411, type: 3}
   m_Name: 
