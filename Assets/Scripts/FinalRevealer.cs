@@ -8,12 +8,16 @@ public class FinalRevealer : MonoBehaviour {
     public GameObject[] toDisableAfterSouth;
     public GameObject[] toEnable;
     public Material starSkybox;
+    public GameObject endText;
 
     int blackedOutPictureCount = 0;
+    float startTime;
+    const float END_TEXT_WAIT_DURATION = 3f;
 
     enum State {
         Idle,
         PrimedForMainWallDeletion,
+        WaitingForEndText,
         Done
     }
 
@@ -51,6 +55,14 @@ public class FinalRevealer : MonoBehaviour {
                 obj.SetActive(false);
             }
 
+            state = State.WaitingForEndText;
+            startTime = Time.time;
+        }
+    }
+
+    void Update() {
+        if (state == State.WaitingForEndText && (Time.time - startTime) >= END_TEXT_WAIT_DURATION) {
+            endText.SetActive(true);
             state = State.Done;
         }
     }
