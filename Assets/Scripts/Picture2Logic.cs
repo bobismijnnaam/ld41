@@ -11,6 +11,7 @@ public class Picture2Logic : MonoBehaviour {
     public GameObject infoText;
     public GameObject[] doors;
     public Material emptyBowlMaterial;
+    public GameObject frame3;
 
     enum State {
         NotLooking,
@@ -19,9 +20,11 @@ public class Picture2Logic : MonoBehaviour {
 
     State state;
     bool triggeredDoors;
+    bool picture3Started;
     bool hasPlayedLaughterTrack;
     AudioSource dingAndWalkAudio;
     AudioSource laughterAudio;
+    Blackouter blackouter;
 
 	// Use this for initialization
 	void Start () {
@@ -42,6 +45,8 @@ public class Picture2Logic : MonoBehaviour {
         dingAndWalkAudio = GetComponent<AudioSource>();
 
         EventManager.StartListening(EventManager.KNOB_TWISTED, knobTwisted);
+
+        blackouter = GetComponentsInChildren<Blackouter>()[0];
 	}
 	
 	// Update is called once per frame
@@ -65,9 +70,12 @@ public class Picture2Logic : MonoBehaviour {
                         startDoorScene();
                     }
 
-                    if (triggeredDoors && hasPlayedLaughterTrack) {
+                    if (triggeredDoors && hasPlayedLaughterTrack && !picture3Started) {
+                        picture3Started = true;
                         startPicture3();
                     }
+
+                    blackouter.areBeingObserved();
                 }
                 break;
             case State.Looking:
@@ -98,8 +106,8 @@ public class Picture2Logic : MonoBehaviour {
         foreach (var door in doors) {
             door.SetActive(false);
         }
-        GameObject.Find("Frame3").SetActive(true);
-        ringBell(GameObject.Find("Frame3").gameObject.transform.position);
+        frame3.SetActive(true);
+        ringBell(frame3.transform.position);
     }
 
     void knobTwisted() {

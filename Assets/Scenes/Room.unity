@@ -404,6 +404,7 @@ MonoBehaviour:
   - {fileID: 3948237}
   - {fileID: 142676481}
   emptyBowlMaterial: {fileID: 2100000, guid: bd74b1a6613864b5a9f3c90056311c7d, type: 2}
+  frame3: {fileID: 1590203672}
 --- !u!82 &111155847
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1582,6 +1583,7 @@ GameObject:
   - component: {fileID: 889019101}
   - component: {fileID: 889019100}
   - component: {fileID: 889019099}
+  - component: {fileID: 889019102}
   m_Layer: 0
   m_Name: Picture1
   m_TagString: Untagged
@@ -1656,6 +1658,20 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 889019097}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &889019102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 889019097}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd5a079e8812f48c7a98a6f15d2b7bf0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blackMaterial: {fileID: 2100000, guid: 51cc2d89ff42b4b50bb2ecc092d8ffb7, type: 2}
+  newTagLine: 
+  tagLine: {fileID: 538175362}
 --- !u!1 &899118540
 GameObject:
   m_ObjectHideFlags: 0
@@ -1667,6 +1683,7 @@ GameObject:
   - component: {fileID: 899118544}
   - component: {fileID: 899118543}
   - component: {fileID: 899118542}
+  - component: {fileID: 899118545}
   m_Layer: 0
   m_Name: Picture3
   m_TagString: Untagged
@@ -1741,6 +1758,101 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 899118540}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &899118545
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 899118540}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd5a079e8812f48c7a98a6f15d2b7bf0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blackMaterial: {fileID: 2100000, guid: 51cc2d89ff42b4b50bb2ecc092d8ffb7, type: 2}
+  newTagLine: Sky
+  tagLine: {fileID: 1910305180}
+--- !u!1 &952696840
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 952696844}
+  - component: {fileID: 952696843}
+  - component: {fileID: 952696842}
+  - component: {fileID: 952696841}
+  m_Layer: 0
+  m_Name: Picture3Camera
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!81 &952696841
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 952696840}
+  m_Enabled: 1
+--- !u!124 &952696842
+Behaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 952696840}
+  m_Enabled: 1
+--- !u!20 &952696843
+Camera:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 952696840}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_ClearFlags: 1
+  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_NormalizedViewPortRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+  near clip plane: 0.3
+  far clip plane: 1000
+  field of view: 60
+  orthographic: 0
+  orthographic size: 5
+  m_Depth: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RenderingPath: -1
+  m_TargetTexture: {fileID: 0}
+  m_TargetDisplay: 0
+  m_TargetEye: 3
+  m_HDR: 1
+  m_AllowMSAA: 1
+  m_AllowDynamicResolution: 0
+  m_ForceIntoRT: 0
+  m_OcclusionCulling: 1
+  m_StereoConvergence: 10
+  m_StereoSeparation: 0.022
+--- !u!4 &952696844
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 952696840}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.92, y: 1.8, z: 5.83}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 19
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1035969479
 Prefab:
   m_ObjectHideFlags: 0
@@ -2371,6 +2483,7 @@ GameObject:
   - component: {fileID: 1590203675}
   - component: {fileID: 1590203674}
   - component: {fileID: 1590203673}
+  - component: {fileID: 1590203678}
   m_Layer: 0
   m_Name: Frame3
   m_TagString: Untagged
@@ -2384,7 +2497,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1590203672}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 18c643733346e4b4baee0e12616d1411, type: 3}
   m_Name: 
@@ -2459,6 +2572,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1590203678
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1590203672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10145eeaab4f241939c305882b01db08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  observeCamera: {fileID: 952696843}
 --- !u!1 &1607210295
 GameObject:
   m_ObjectHideFlags: 0
@@ -2470,6 +2595,7 @@ GameObject:
   - component: {fileID: 1607210299}
   - component: {fileID: 1607210298}
   - component: {fileID: 1607210297}
+  - component: {fileID: 1607210300}
   m_Layer: 0
   m_Name: Picture2
   m_TagString: Untagged
@@ -2544,6 +2670,20 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1607210295}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1607210300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1607210295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd5a079e8812f48c7a98a6f15d2b7bf0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blackMaterial: {fileID: 2100000, guid: 51cc2d89ff42b4b50bb2ecc092d8ffb7, type: 2}
+  newTagLine: 
+  tagLine: {fileID: 215402440}
 --- !u!1 &1615321212
 GameObject:
   m_ObjectHideFlags: 0

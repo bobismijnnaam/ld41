@@ -17,6 +17,7 @@ public class EventManager : MonoBehaviour {
     public const string LEAVE_OBSERVE_MODE = "LEAVE_OBSERVE_MODE";
     public const string KEEP_INFO_ALIVE = "KEEP_INFO_ALIVE";
     public const string KNOB_TWISTED = "KNOB_TWISTED";
+    public const string BLACKING_OUT_PHASE_START = "BLACKING_OUT_PHASE_START";
 
     private Dictionary <string, UnityEvent> eventDictionary;
 

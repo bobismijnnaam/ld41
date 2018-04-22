@@ -22,6 +22,8 @@ public class Storyline : MonoBehaviour {
     bool magnifying;
     bool sawLittleMan;
 
+    Blackouter blackouter;
+
 	// Use this for initialization
 	void Start () {
 	    EventManager.StartListening(EventManager.SEE_NORTH_WALL, seeNorthWall);	
@@ -33,6 +35,8 @@ public class Storyline : MonoBehaviour {
         
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = true;
+
+        blackouter = frame1.GetComponentsInChildren<Blackouter>()[0];
 	}
 
     void enterObserveMode() {
@@ -66,6 +70,8 @@ public class Storyline : MonoBehaviour {
                 magnifying = true;
 
                 EventManager.TriggerEvent(EventManager.ENTER_OBSERVE_MODE);
+
+                blackouter.areBeingObserved();
             }
         }
 
