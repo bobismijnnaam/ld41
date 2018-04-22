@@ -17,7 +17,6 @@ public class KeepAlive : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 	    gameObject.SetActive((Time.time - startTime) < aliveDuration);
-        Debug.Log("Info active");
 	}
 
     void keepInfoAlive() {

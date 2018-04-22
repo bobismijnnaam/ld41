@@ -5,17 +5,18 @@ using System.Collections.Generic;
 
 public class EventManager : MonoBehaviour {
 
-    public static string SEE_NORTH_WALL = "SEE_NORTH_WALL";
-    public static string SEE_WEST_WALL = "SEE_WEST_WALL";
-    public static string SEE_EAST_WALL = "SEE_EAST_WALL";
-    public static string SEE_SOUTH_WALL = "SEE_SOUTH_WALL";
-    public static string SEE_PICTURE = "SEE_PICTURE";
-    public static string SEE_NOTHING = "SEE_NOTHING";
-    public static string DISABLE_FPS_CAMERA = "DISABLE_FPS_CAMERA";
-    public static string ENABLE_PICTURE1_CAMERA = "ENABLE_PICTURE1_CAMERA";
-    public static string ENTER_OBSERVE_MODE = "ENTER_OBSERVE_MODE";
-    public static string LEAVE_OBSERVE_MODE = "LEAVE_OBSERVE_MODE";
-    public static string KEEP_INFO_ALIVE = "KEEP_INFO_ALIVE";
+    public const string SEE_NORTH_WALL = "SEE_NORTH_WALL";
+    public const string SEE_WEST_WALL = "SEE_WEST_WALL";
+    public const string SEE_EAST_WALL = "SEE_EAST_WALL";
+    public const string SEE_SOUTH_WALL = "SEE_SOUTH_WALL";
+    public const string SEE_PICTURE = "SEE_PICTURE";
+    public const string SEE_NOTHING = "SEE_NOTHING";
+    public const string DISABLE_FPS_CAMERA = "DISABLE_FPS_CAMERA";
+    public const string ENABLE_PICTURE1_CAMERA = "ENABLE_PICTURE1_CAMERA";
+    public const string ENTER_OBSERVE_MODE = "ENTER_OBSERVE_MODE";
+    public const string LEAVE_OBSERVE_MODE = "LEAVE_OBSERVE_MODE";
+    public const string KEEP_INFO_ALIVE = "KEEP_INFO_ALIVE";
+    public const string KNOB_TWISTED = "KNOB_TWISTED";
 
     private Dictionary <string, UnityEvent> eventDictionary;
 
