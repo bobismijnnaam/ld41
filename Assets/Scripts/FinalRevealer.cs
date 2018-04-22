@@ -13,6 +13,7 @@ public class FinalRevealer : MonoBehaviour {
     int blackedOutPictureCount = 0;
     float startTime;
     const float END_TEXT_WAIT_DURATION = 3f;
+    AudioSource endingAudio;
 
     enum State {
         Idle,
@@ -24,15 +25,24 @@ public class FinalRevealer : MonoBehaviour {
     State state;
     bool primedForMainWallDeletion;
 
+    float targetAudioVolume = 0;
+
 	// Use this for initialization
 	void Start () {
 		EventManager.StartListening(EventManager.PICTURE_BLACKED_OUT, pictureBlackedOut);
         EventManager.StartListening(EventManager.SEE_SOUTH_WALL, seeSouthWall);
         state = State.Idle;
+        endingAudio = GetComponent<AudioSource>();
+        endingAudio.volume = 0.0f;
 	}
 
     void pictureBlackedOut() {
         blackedOutPictureCount += 1;
+
+        targetAudioVolume += 0.2f;
+        if (!endingAudio.isPlaying) {
+            endingAudio.Play();
+        }
 
         if (blackedOutPictureCount == 3) {
             foreach (var obj in toDisable) {
@@ -64,6 +74,10 @@ public class FinalRevealer : MonoBehaviour {
         if (state == State.WaitingForEndText && (Time.time - startTime) >= END_TEXT_WAIT_DURATION) {
             endText.SetActive(true);
             state = State.Done;
+        }
+
+        if (endingAudio.volume < targetAudioVolume) {
+            endingAudio.volume += Time.deltaTime * 0.2f;
         }
     }
 }

@@ -43,12 +43,6 @@ public class Blackouter : MonoBehaviour {
             // Unprime
             state = State.Black;
 
-            // Do music stuff
-            endingMusic.volume += 0.2f;
-            if (!endingMusic.isPlaying) {
-                endingMusic.Play();
-            }
-
             EventManager.TriggerEvent(EventManager.PICTURE_BLACKED_OUT);
         }
     }

@@ -9,7 +9,6 @@ public class KeepAlive : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        Debug.Log("Registering keep alive!");
 		EventManager.StartListening(EventManager.KEEP_INFO_ALIVE, keepInfoAlive);
         startTime = -99999f;
         gameObject.SetActive(false);
@@ -23,6 +22,5 @@ public class KeepAlive : MonoBehaviour {
     void keepInfoAlive() {
         startTime = Time.time;
         gameObject.SetActive(true);
-        Debug.Log("keeping alive!");
     }
 }
