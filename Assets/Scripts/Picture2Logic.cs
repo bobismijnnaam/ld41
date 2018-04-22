@@ -12,6 +12,7 @@ public class Picture2Logic : MonoBehaviour {
     public GameObject[] doors;
     public Material emptyBowlMaterial;
     public GameObject frame3;
+    public GameObject pic2tagline;
 
     enum State {
         NotLooking,
@@ -121,6 +122,9 @@ public class Picture2Logic : MonoBehaviour {
             var pic2 = GameObject.Find("Picture2").gameObject;
             var meshRenderer = pic2.GetComponent<MeshRenderer>();
             meshRenderer.material = emptyBowlMaterial;
+
+            // Set tag line
+            pic2tagline.GetComponent<TextMesh>().text = "Bowl";
         }
     }
 

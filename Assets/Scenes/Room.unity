@@ -405,6 +405,7 @@ MonoBehaviour:
   - {fileID: 142676481}
   emptyBowlMaterial: {fileID: 2100000, guid: bd74b1a6613864b5a9f3c90056311c7d, type: 2}
   frame3: {fileID: 1590203672}
+  pic2tagline: {fileID: 215402440}
 --- !u!82 &111155847
 AudioSource:
   m_ObjectHideFlags: 0
