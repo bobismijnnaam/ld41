@@ -52,7 +52,6 @@ public class Storyline : MonoBehaviour {
     void Update() {
         if (!picture1Camera.gameObject.activeSelf) {
             if (isLookingAtPicture1()) {
-                Debug.Log("Trying to send keep info alive...");
                 EventManager.TriggerEvent(EventManager.KEEP_INFO_ALIVE);
             }
 
